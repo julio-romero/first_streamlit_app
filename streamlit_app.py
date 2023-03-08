@@ -32,7 +32,7 @@ import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 #streamlit.text(fruityvice_response.json())
 # convert the json into a pandas dataframe
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # shows the dataframe in a nice-streamlit way!
 streamlit.dataframe(fruityvice_normalized)
 
