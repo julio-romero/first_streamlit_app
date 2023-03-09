@@ -36,14 +36,15 @@ try:
         streamlit.write('The user entered ', fruit_choice)
         import requests
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+        #streamlit.text(fruityvice_response.json())
+    # convert the json into a pandas dataframe
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+    # shows the dataframe in a nice-streamlit way!
+    streamlit.dataframe(fruityvice_normalized)
 except URLError as e:
     streamlit.error(e)
 
-#streamlit.text(fruityvice_response.json())
-# convert the json into a pandas dataframe
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-# shows the dataframe in a nice-streamlit way!
-streamlit.dataframe(fruityvice_normalized)
+
 
 streamlit.stop()
 
